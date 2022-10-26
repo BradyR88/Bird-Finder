@@ -15,6 +15,7 @@
 		7368B15F2908492C00DB654E /* APIGiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368B15E2908492C00DB654E /* APIGiter.swift */; };
 		7368B161290881D300DB654E /* HotSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368B160290881D300DB654E /* HotSpot.swift */; };
 		7368B16629099FD900DB654E /* DeviceLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368B16529099FD900DB654E /* DeviceLocationService.swift */; };
+		7368B16B2909AE5000DB654E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368B16A2909AE5000DB654E /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		7368B15E2908492C00DB654E /* APIGiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGiter.swift; sourceTree = "<group>"; };
 		7368B160290881D300DB654E /* HotSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotSpot.swift; sourceTree = "<group>"; };
 		7368B16529099FD900DB654E /* DeviceLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceLocationService.swift; sourceTree = "<group>"; };
+		7368B16A2909AE5000DB654E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			children = (
 				7368B14C290845BB00DB654E /* Bird_FinderApp.swift */,
 				7368B14E290845BB00DB654E /* ContentView.swift */,
+				7368B1672909AE2500DB654E /* ViewModel */,
 				7368B15A2908479D00DB654E /* URLDownload */,
 				7368B162290881D800DB654E /* Model */,
 				7368B150290845BC00DB654E /* Assets.xcassets */,
@@ -93,6 +96,14 @@
 				7368B160290881D300DB654E /* HotSpot.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		7368B1672909AE2500DB654E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7368B16A2909AE5000DB654E /* ViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +182,7 @@
 				7368B15F2908492C00DB654E /* APIGiter.swift in Sources */,
 				7368B14D290845BB00DB654E /* Bird_FinderApp.swift in Sources */,
 				7368B161290881D300DB654E /* HotSpot.swift in Sources */,
+				7368B16B2909AE5000DB654E /* ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

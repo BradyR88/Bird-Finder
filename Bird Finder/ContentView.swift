@@ -8,23 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel: ViewModel
+    
     var body: some View {
-        Button {
-            Task {
-                let giter = APIGiter(gitType: .NearbyHotspots)
-                let data:[HotSpot] = try! await giter.data()
-                print(data)
+        VStack {
+            List(viewModel.hotSpots, id: \.locId) { hotSpot in
+                Text(hotSpot.locId)
             }
-           
-        } label: {
-            Text("Test")
+            Button {
+                viewModel.location.requestGeolocationPermission()
+            } label: {
+                Text("Request")
+            }
+            Button {
+                Task {
+                    await viewModel.gitHotSpots()
+                }
+            } label: {
+                Text("Git")
+            }
         }
-
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(ViewModel())
     }
 }

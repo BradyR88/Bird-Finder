@@ -10,9 +10,13 @@ import CoreLocation
 
 class DeviceLocationService: NSObject, CLLocationManagerDelegate, ObservableObject {
     
-    var coordinatesPublicher = PassthroughSubject<CLLocationCoordinate2D, Error>()
+    //    var coordinatesPublicher = PassthroughSubject<CLLocationCoordinate2D, Error>()
+    //
+    //    var deniedLocationAccessPublisher = PassthroughSubject<Void, Never>()
     
-    var deniedLocationAccessPublisher = PassthroughSubject<Void, Never>()
+    var authorizationState = CLAuthorizationStatus.notDetermined
+    var lat: Double = 0
+    var lng: Double = 0
     
     private override init() {
         super.init()
@@ -27,34 +31,32 @@ class DeviceLocationService: NSObject, CLLocationManagerDelegate, ObservableObje
         return manager
     }()
     
-    func requestLocationUpdates() {
-        switch locationManager.authorizationStatus {
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        case .authorizedWhenInUse:
-            locationManager.startUpdatingLocation()
-        default:
-            deniedLocationAccessPublisher.send()
-        }
+    func requestGeolocationPermission() {
+        // request permition for the user
+        locationManager.requestWhenInUseAuthorization()
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        
+        self.authorizationState = locationManager.authorizationStatus
+        
         switch manager.authorizationStatus {
         case .authorizedWhenInUse, .authorizedAlways:
             manager.startUpdatingLocation()
         default:
             manager.stopUpdatingLocation()
-            deniedLocationAccessPublisher.send()
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        coordinatesPublicher.send(location.coordinate)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        coordinatesPublicher.send(completion: .failure(error))
+        let userLocation = locations.first
+        
+        if userLocation != nil {
+            locationManager.stopUpdatingLocation()
+            
+            self.lat = userLocation!.coordinate.latitude
+            self.lng = userLocation!.coordinate.longitude
+        }
     }
 }
 

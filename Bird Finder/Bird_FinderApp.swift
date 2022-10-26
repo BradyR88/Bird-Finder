@@ -12,6 +12,7 @@ struct Bird_FinderApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(ViewModel())
         }
     }
 }
