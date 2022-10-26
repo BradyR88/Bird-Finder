@@ -12,6 +12,8 @@ class DeviceLocationService: NSObject, CLLocationManagerDelegate, ObservableObje
     
     var coordinatesPublicher = PassthroughSubject<CLLocationCoordinate2D, Error>()
     
+    var deniedLocationAccessPublisher = PassthroughSubject<Void, Never>()
+    
     private override init() {
         super.init()
     }
@@ -24,6 +26,27 @@ class DeviceLocationService: NSObject, CLLocationManagerDelegate, ObservableObje
         manager.delegate = self
         return manager
     }()
+    
+    func requestLocationUpdates() {
+        switch locationManager.authorizationStatus {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+        default:
+            deniedLocationAccessPublisher.send()
+        }
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .authorizedWhenInUse, .authorizedAlways:
+            manager.startUpdatingLocation()
+        default:
+            manager.stopUpdatingLocation()
+            deniedLocationAccessPublisher.send()
+        }
+    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
