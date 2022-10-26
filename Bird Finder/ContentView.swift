@@ -9,8 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Button {
+            Task {
+                let giter = APIGiter<[HotSpot]>(gitType: .NearbyHotspots)
+                let data = try! await giter.data()
+                print(data)
+            }
+           
+        } label: {
+            Text("Test")
+        }
+
     }
 }
 
