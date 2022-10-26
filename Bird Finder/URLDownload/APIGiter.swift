@@ -4,13 +4,12 @@
 //
 //  Created by Brady Robshaw on 10/25/22.
 //
-
 import Foundation
 
-struct APIGiter<T: Decodable> {
+struct APIGiter {
     let gitType: GitType
     
-    func data()async throws -> T {
+    func data<T: Decodable>()async throws -> T {
         switch gitType {
         case .NearbyHotspots:
             let lat = String(30.4383)

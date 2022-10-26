@@ -11,8 +11,8 @@ struct ContentView: View {
     var body: some View {
         Button {
             Task {
-                let giter = APIGiter<[HotSpot]>(gitType: .NearbyHotspots)
-                let data = try! await giter.data()
+                let giter = APIGiter(gitType: .NearbyHotspots)
+                let data:[HotSpot] = try! await giter.data()
                 print(data)
             }
            

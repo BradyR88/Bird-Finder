@@ -14,6 +14,7 @@
 		7368B15C290847EE00DB654E /* URLDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368B15B290847EE00DB654E /* URLDecode.swift */; };
 		7368B15F2908492C00DB654E /* APIGiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368B15E2908492C00DB654E /* APIGiter.swift */; };
 		7368B161290881D300DB654E /* HotSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368B160290881D300DB654E /* HotSpot.swift */; };
+		7368B16629099FD900DB654E /* DeviceLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368B16529099FD900DB654E /* DeviceLocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		7368B15B290847EE00DB654E /* URLDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLDecode.swift; sourceTree = "<group>"; };
 		7368B15E2908492C00DB654E /* APIGiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGiter.swift; sourceTree = "<group>"; };
 		7368B160290881D300DB654E /* HotSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotSpot.swift; sourceTree = "<group>"; };
+		7368B16529099FD900DB654E /* DeviceLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceLocationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			children = (
 				7368B15B290847EE00DB654E /* URLDecode.swift */,
 				7368B15E2908492C00DB654E /* APIGiter.swift */,
+				7368B16529099FD900DB654E /* DeviceLocationService.swift */,
 			);
 			path = URLDownload;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 			files = (
 				7368B15C290847EE00DB654E /* URLDecode.swift in Sources */,
 				7368B14F290845BB00DB654E /* ContentView.swift in Sources */,
+				7368B16629099FD900DB654E /* DeviceLocationService.swift in Sources */,
 				7368B15F2908492C00DB654E /* APIGiter.swift in Sources */,
 				7368B14D290845BB00DB654E /* Bird_FinderApp.swift in Sources */,
 				7368B161290881D300DB654E /* HotSpot.swift in Sources */,
@@ -298,6 +302,7 @@
 				DEVELOPMENT_TEAM = F4APFPN2XP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Access your Location to find it nearby hotspots.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -327,6 +332,7 @@
 				DEVELOPMENT_TEAM = F4APFPN2XP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Access your Location to find it nearby hotspots.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
