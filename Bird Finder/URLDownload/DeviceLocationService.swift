@@ -9,54 +9,57 @@ import Combine
 import CoreLocation
 
 class DeviceLocationService: NSObject, CLLocationManagerDelegate, ObservableObject {
-    
-    //    var coordinatesPublicher = PassthroughSubject<CLLocationCoordinate2D, Error>()
-    //
-    //    var deniedLocationAccessPublisher = PassthroughSubject<Void, Never>()
-    
-    var authorizationState = CLAuthorizationStatus.notDetermined
-    var lat: Double = 0
-    var lng: Double = 0
-    
+
+    var coordinatesPublisher = PassthroughSubject<CLLocationCoordinate2D, Error>()
+    var deniedLocationAccessPublisher = PassthroughSubject<Void, Never>()
+
     private override init() {
         super.init()
     }
-    
     static let shared = DeviceLocationService()
-    
+
     private lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
-        manager.desiredAccuracy = kCLLocationAccuracyKilometer
+        manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.delegate = self
         return manager
     }()
-    
-    func requestGeolocationPermission() {
-        // request permition for the user
-        locationManager.requestWhenInUseAuthorization()
+
+    func requestLocationUpdates() {
+        switch locationManager.authorizationStatus {
+            
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            
+        case .authorizedWhenInUse, .authorizedAlways:
+            locationManager.startUpdatingLocation()
+            
+        default:
+            deniedLocationAccessPublisher.send()
+        }
     }
-    
+
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        
-        self.authorizationState = locationManager.authorizationStatus
-        
         switch manager.authorizationStatus {
+            
         case .authorizedWhenInUse, .authorizedAlways:
             manager.startUpdatingLocation()
+            
         default:
             manager.stopUpdatingLocation()
+            deniedLocationAccessPublisher.send()
         }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(locations)
+        guard let location = locations.last else { return }
+        coordinatesPublisher.send(location.coordinate)
+        locationManager.stopUpdatingLocation()
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation = locations.first
-        
-        if userLocation != nil {
-            locationManager.stopUpdatingLocation()
-            
-            self.lat = userLocation!.coordinate.latitude
-            self.lng = userLocation!.coordinate.longitude
-        }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        coordinatesPublisher.send(completion: .failure(error))
     }
-}
 
+}

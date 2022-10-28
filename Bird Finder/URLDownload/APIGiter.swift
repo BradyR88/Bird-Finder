@@ -9,14 +9,9 @@ import Foundation
 struct APIGiter {
     let gitType: GitType
     
-    func data<T: Decodable>()async throws -> T {
+    func data<T: Decodable>(lat: Double, lng: Double)async throws -> T {
         switch gitType {
         case .NearbyHotspots:
-            let location = DeviceLocationService.shared
-            
-            let lat = location.lat //String(30.4383)
-            let lng = location.lng // String(-84.2807)
-            
             let urlString = "https://api.ebird.org/v2/ref/hotspot/geo?lat=\(lat)&lng=\(lng)&fmt=json"
             guard let url = URL(string: urlString) else { throw URLError(.badURL) }
             let data = try await URLSession.shared.decode(T.self, from: url)
