@@ -23,6 +23,12 @@ class ViewModel: ObservableObject {
     
     let location = DeviceLocationService.shared
     
+    init() {
+        observeCoordinateUpdates()
+        observeDeniedLocationAccess()
+        location.requestLocationUpdates()
+    }
+    
     func gitHotSpots(lat: Double, lng: Double)async {
         let git = APIGiter(gitType: .NearbyHotspots)
         do {
