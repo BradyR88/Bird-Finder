@@ -13,17 +13,11 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-//            Text("Latitude: \(coordinates.lat)")
-//                .font(.largeTitle)
-//            Text("Longitude: \(coordinates.lon)")
-//                .font(.largeTitle)
-            
             List(viewModel.hotSpots, id: \.locId) {hotSpot in
                 Text(hotSpot.locId)
             }
             
             Button {
-                viewModel.observeCoordinateUpdates()
                 viewModel.location.requestLocationUpdates()
             } label: {
                 Text("update")
