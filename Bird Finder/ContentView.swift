@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             List(viewModel.hotSpots, id: \.locId) {hotSpot in
-                Text(hotSpot.locId)
+                Text(hotSpot.locName)
             }
             
             Button {

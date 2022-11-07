@@ -9,6 +9,7 @@ import Foundation
 
 struct HotSpot: Decodable {
     let locId: String
+    let locName: String
     let countryCode: String
     let subnational1Code: String
     let subnational2Code: String

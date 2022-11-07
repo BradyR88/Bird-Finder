@@ -41,8 +41,8 @@ class ViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 print("Handle \(completion) for error and finished subscription.")
-            } receiveValue: { coordinates in
-                self.coordinates = (coordinates.latitude, coordinates.longitude)
+            } receiveValue: { coord in
+                self.coordinates = (coord.latitude, coord.longitude)
             }
             .store(in: &tokens)
     }
