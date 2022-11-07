@@ -7,16 +7,17 @@
 
 import Foundation
 import Combine
+import CoreLocation
 
 class ViewModel: ObservableObject {
     
     @Published var hotSpots: [HotSpot] = []
     
-    var tokens: Set<AnyCancellable> = []
-    var coordinates: (lat: Double, lon: Double) = (0, 0) {
+    private var tokens: Set<AnyCancellable> = []
+    var coordinates: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0) {
         didSet {
             Task {
-                await gitHotSpots(lat: coordinates.lat, lng: coordinates.lon)
+                await gitHotSpots(lat: coordinates.latitude, lng: coordinates.longitude)
             }
         }
     }
@@ -48,7 +49,7 @@ class ViewModel: ObservableObject {
             .sink { completion in
                 print("Handle \(completion) for error and finished subscription.")
             } receiveValue: { coord in
-                self.coordinates = (coord.latitude, coord.longitude)
+                self.coordinates = coord
             }
             .store(in: &tokens)
     }

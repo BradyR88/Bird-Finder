@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List(viewModel.hotSpots, id: \.locId) {hotSpot in
+                List(viewModel.hotSpots) {hotSpot in
                     Text(hotSpot.locName)
                         .foregroundColor(.red)
                     NavigationLink(hotSpot.locName, destination: LocationView(hotSpot: hotSpot))
@@ -29,11 +29,6 @@ struct ContentView: View {
                 }
 
             }
-//            .onAppear {
-//                viewModel.observeCoordinateUpdates()
-//                viewModel.observeDeniedLocationAccess()
-//                viewModel.location.requestLocationUpdates()
-//            }
         }
     }
 }

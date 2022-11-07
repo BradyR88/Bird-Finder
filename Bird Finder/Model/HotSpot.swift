@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import CoreLocation
 
-struct HotSpot: Decodable {
-    let locId: String
+struct HotSpot: Decodable, Identifiable {
+    let id: String
     let locName: String
     let countryCode: String
     let subnational1Code: String
@@ -18,5 +19,14 @@ struct HotSpot: Decodable {
     let latestObsDt: String
     let numSpeciesAllTime: Int
     
-    static let example = HotSpot(locId: "L283548", locName: "A. J. Henry Park", countryCode: "US", subnational1Code: "US-FL", subnational2Code: "US-FL-073", lat: 30.5064607, lng: -84.2159428, latestObsDt: "2022-10-22 08:38", numSpeciesAllTime: 142)
+    var coordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: lat, longitude: lng)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "locId"
+        case locName, countryCode, subnational1Code, subnational2Code, lat, lng, latestObsDt, numSpeciesAllTime
+    }
+    
+    static let example = HotSpot(id: "L283548", locName: "A. J. Henry Park", countryCode: "US", subnational1Code: "US-FL", subnational2Code: "US-FL-073", lat: 30.5064607, lng: -84.2159428, latestObsDt: "2022-10-22 08:38", numSpeciesAllTime: 142)
 }
