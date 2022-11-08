@@ -15,12 +15,8 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 List(viewModel.hotSpots) {hotSpot in
-                    Text(hotSpot.locName)
-                        .foregroundColor(.red)
                     NavigationLink(hotSpot.locName, destination: LocationView(hotSpot: hotSpot))
                 }
-                
-                
                 
                 Button {
                     viewModel.location.requestLocationUpdates()

@@ -10,13 +10,22 @@ import MapKit
 
 struct LocationView: View {
     @EnvironmentObject var viewModel: ViewModel
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 0, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
+    @State private var region = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+        span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+    )
     
     let hotSpot: HotSpot
     
     
     var body: some View {
-        Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: .constant(.follow))
+        Map(
+            coordinateRegion: $region,
+            showsUserLocation: true,
+            userTrackingMode: .constant(.follow),
+            annotationItems: [hotSpot]) { spot in
+            MapMarker(coordinate: spot.coordinate)
+        }
             .edgesIgnoringSafeArea(.all)
             .onAppear {
                 region.center = viewModel.coordinates
