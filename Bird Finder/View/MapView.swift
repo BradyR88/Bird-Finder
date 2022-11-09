@@ -19,14 +19,19 @@ struct MapView: View {
         Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: .constant(.none), annotationItems: viewModel.hotSpots) { spot in
             
                 MapAnnotation(coordinate: spot.coordinate) {
-                    Image(systemName: "mappin.circle.fill")
-                        .font(.title)
-                        .foregroundColor(.red)
+                    MapAnnotationView(hotSpot: spot)
                 }
             }
-            .edgesIgnoringSafeArea(.all)
+            //.edgesIgnoringSafeArea(.all)
             .onAppear {
                 region.center = viewModel.coordinates
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .overlay {
+                Color.clear
+                    .background(.regularMaterial)
+                    .frame(height: 45)
+                    .frame(maxHeight: .infinity, alignment: .top)
             }
     }
 }

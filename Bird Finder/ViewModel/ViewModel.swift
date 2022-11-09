@@ -16,9 +16,13 @@ class ViewModel: ObservableObject {
     private var tokens: Set<AnyCancellable> = []
     var coordinates: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0) {
         didSet {
+            #if targetEnvironment(simulator)
+            hotSpots = [HotSpot.example]
+            #else
             Task {
                 await gitHotSpots(lat: coordinates.latitude, lng: coordinates.longitude)
             }
+            #endif
         }
     }
     
