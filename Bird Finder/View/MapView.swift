@@ -8,24 +8,22 @@
 import SwiftUI
 import MapKit
 
-struct LocationView: View {
+struct MapView: View {
     @EnvironmentObject var viewModel: ViewModel
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 0, longitude: 0),
-        span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+        span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
     )
     
-    let hotSpot: HotSpot
-    
-    
     var body: some View {
-        Map(
-            coordinateRegion: $region,
-            showsUserLocation: true,
-            userTrackingMode: .constant(.follow),
-            annotationItems: [hotSpot]) { spot in
-            MapMarker(coordinate: spot.coordinate)
-        }
+        Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: .constant(.none), annotationItems: viewModel.hotSpots) { spot in
+            
+                MapAnnotation(coordinate: spot.coordinate) {
+                    Image(systemName: "mappin.circle.fill")
+                        .font(.title)
+                        .foregroundColor(.red)
+                }
+            }
             .edgesIgnoringSafeArea(.all)
             .onAppear {
                 region.center = viewModel.coordinates
@@ -35,7 +33,7 @@ struct LocationView: View {
 
 struct LocationView_Previews: PreviewProvider {
     static var previews: some View {
-        LocationView(hotSpot: HotSpot.example)
+        MapView()
             .environmentObject(ViewModel())
     }
 }

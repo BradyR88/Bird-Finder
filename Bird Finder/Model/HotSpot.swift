@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-struct HotSpot: Decodable, Identifiable {
+struct HotSpot: Decodable, Equatable, Identifiable {
     let id: String
     let locName: String
     let countryCode: String

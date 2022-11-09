@@ -12,18 +12,9 @@ struct ContentView: View {
     @EnvironmentObject var viewModel: ViewModel
     
     var body: some View {
-        NavigationView {
-            VStack {
-                List(viewModel.hotSpots) {hotSpot in
-                    NavigationLink(hotSpot.locName, destination: LocationView(hotSpot: hotSpot))
-                }
-                
-                Button {
-                    viewModel.location.requestLocationUpdates()
-                } label: {
-                    Text("update")
-                }
-
+        VStack {
+            List(viewModel.hotSpots) {hotSpot in
+                NavigationLink(hotSpot.locName, destination: EmptyView())
             }
         }
     }

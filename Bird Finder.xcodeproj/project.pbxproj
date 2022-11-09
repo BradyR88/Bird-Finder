@@ -16,7 +16,8 @@
 		7368B161290881D300DB654E /* HotSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368B160290881D300DB654E /* HotSpot.swift */; };
 		7368B16629099FD900DB654E /* DeviceLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368B16529099FD900DB654E /* DeviceLocationService.swift */; };
 		7368B16B2909AE5000DB654E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368B16A2909AE5000DB654E /* ViewModel.swift */; };
-		73E7AEA8291995810086329E /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E7AEA7291995810086329E /* LocationView.swift */; };
+		736F04DC291C32BF00FDDC65 /* TabNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736F04DB291C32BF00FDDC65 /* TabNavView.swift */; };
+		73E7AEA8291995810086329E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E7AEA7291995810086329E /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +31,8 @@
 		7368B160290881D300DB654E /* HotSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotSpot.swift; sourceTree = "<group>"; };
 		7368B16529099FD900DB654E /* DeviceLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceLocationService.swift; sourceTree = "<group>"; };
 		7368B16A2909AE5000DB654E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		73E7AEA7291995810086329E /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		736F04DB291C32BF00FDDC65 /* TabNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabNavView.swift; sourceTree = "<group>"; };
+		73E7AEA7291995810086329E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +113,9 @@
 		73E7AEA6291995680086329E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				736F04DB291C32BF00FDDC65 /* TabNavView.swift */,
 				7368B14E290845BB00DB654E /* ContentView.swift */,
-				73E7AEA7291995810086329E /* LocationView.swift */,
+				73E7AEA7291995810086329E /* MapView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,7 +191,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7368B15C290847EE00DB654E /* URLDecode.swift in Sources */,
-				73E7AEA8291995810086329E /* LocationView.swift in Sources */,
+				73E7AEA8291995810086329E /* MapView.swift in Sources */,
+				736F04DC291C32BF00FDDC65 /* TabNavView.swift in Sources */,
 				7368B14F290845BB00DB654E /* ContentView.swift in Sources */,
 				7368B16629099FD900DB654E /* DeviceLocationService.swift in Sources */,
 				7368B15F2908492C00DB654E /* APIGiter.swift in Sources */,
