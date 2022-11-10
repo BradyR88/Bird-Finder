@@ -19,6 +19,7 @@
 		736F04DC291C32BF00FDDC65 /* TabNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736F04DB291C32BF00FDDC65 /* TabNavView.swift */; };
 		736F04DE291C534600FDDC65 /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736F04DD291C534600FDDC65 /* MapAnnotationView.swift */; };
 		736F04E0291D6AFA00FDDC65 /* LocationInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736F04DF291D6AFA00FDDC65 /* LocationInfoView.swift */; };
+		736F04E2291DA1DA00FDDC65 /* Bird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736F04E1291DA1DA00FDDC65 /* Bird.swift */; };
 		73E7AEA8291995810086329E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E7AEA7291995810086329E /* MapView.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		736F04DB291C32BF00FDDC65 /* TabNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabNavView.swift; sourceTree = "<group>"; };
 		736F04DD291C534600FDDC65 /* MapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
 		736F04DF291D6AFA00FDDC65 /* LocationInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoView.swift; sourceTree = "<group>"; };
+		736F04E1291DA1DA00FDDC65 /* Bird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bird.swift; sourceTree = "<group>"; };
 		73E7AEA7291995810086329E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				7368B160290881D300DB654E /* HotSpot.swift */,
+				736F04E1291DA1DA00FDDC65 /* Bird.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				7368B15F2908492C00DB654E /* APIGiter.swift in Sources */,
 				7368B14D290845BB00DB654E /* Bird_FinderApp.swift in Sources */,
 				7368B161290881D300DB654E /* HotSpot.swift in Sources */,
+				736F04E2291DA1DA00FDDC65 /* Bird.swift in Sources */,
 				7368B16B2909AE5000DB654E /* ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
