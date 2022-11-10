@@ -18,6 +18,7 @@
 		7368B16B2909AE5000DB654E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368B16A2909AE5000DB654E /* ViewModel.swift */; };
 		736F04DC291C32BF00FDDC65 /* TabNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736F04DB291C32BF00FDDC65 /* TabNavView.swift */; };
 		736F04DE291C534600FDDC65 /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736F04DD291C534600FDDC65 /* MapAnnotationView.swift */; };
+		736F04E0291D6AFA00FDDC65 /* LocationInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736F04DF291D6AFA00FDDC65 /* LocationInfoView.swift */; };
 		73E7AEA8291995810086329E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E7AEA7291995810086329E /* MapView.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		7368B16A2909AE5000DB654E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		736F04DB291C32BF00FDDC65 /* TabNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabNavView.swift; sourceTree = "<group>"; };
 		736F04DD291C534600FDDC65 /* MapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
+		736F04DF291D6AFA00FDDC65 /* LocationInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoView.swift; sourceTree = "<group>"; };
 		73E7AEA7291995810086329E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +121,7 @@
 				7368B14E290845BB00DB654E /* ContentView.swift */,
 				73E7AEA7291995810086329E /* MapView.swift */,
 				736F04DD291C534600FDDC65 /* MapAnnotationView.swift */,
+				736F04DF291D6AFA00FDDC65 /* LocationInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				7368B15C290847EE00DB654E /* URLDecode.swift in Sources */,
 				73E7AEA8291995810086329E /* MapView.swift in Sources */,
 				736F04DC291C32BF00FDDC65 /* TabNavView.swift in Sources */,
+				736F04E0291D6AFA00FDDC65 /* LocationInfoView.swift in Sources */,
 				7368B14F290845BB00DB654E /* ContentView.swift in Sources */,
 				7368B16629099FD900DB654E /* DeviceLocationService.swift in Sources */,
 				7368B15F2908492C00DB654E /* APIGiter.swift in Sources */,

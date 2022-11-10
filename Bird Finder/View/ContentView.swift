@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             List(viewModel.hotSpots) {hotSpot in
-                NavigationLink(hotSpot.locName, destination: EmptyView())
+                NavigationLink(hotSpot.locName, destination: LocationInfoView(spot: hotSpot))
             }
         }
     }

@@ -12,7 +12,7 @@ struct MapAnnotationView: View {
     
     var body: some View {
         NavigationLink {
-            EmptyView()
+            LocationInfoView(spot: hotSpot)
         } label: {
             VStack(spacing: 0) {
                 ZStack {
