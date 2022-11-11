@@ -20,6 +20,7 @@
 		736F04DE291C534600FDDC65 /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736F04DD291C534600FDDC65 /* MapAnnotationView.swift */; };
 		736F04E0291D6AFA00FDDC65 /* LocationInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736F04DF291D6AFA00FDDC65 /* LocationInfoView.swift */; };
 		736F04E2291DA1DA00FDDC65 /* Bird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736F04E1291DA1DA00FDDC65 /* Bird.swift */; };
+		736F04E6291EBE9400FDDC65 /* SecretConstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736F04E5291EBE9400FDDC65 /* SecretConstance.swift */; };
 		73E7AEA8291995810086329E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E7AEA7291995810086329E /* MapView.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		736F04DD291C534600FDDC65 /* MapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
 		736F04DF291D6AFA00FDDC65 /* LocationInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoView.swift; sourceTree = "<group>"; };
 		736F04E1291DA1DA00FDDC65 /* Bird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bird.swift; sourceTree = "<group>"; };
+		736F04E5291EBE9400FDDC65 /* SecretConstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretConstance.swift; sourceTree = "<group>"; };
 		73E7AEA7291995810086329E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +79,7 @@
 				7368B15A2908479D00DB654E /* URLDownload */,
 				7368B162290881D800DB654E /* Model */,
 				7368B150290845BC00DB654E /* Assets.xcassets */,
+				736F04E5291EBE9400FDDC65 /* SecretConstance.swift */,
 				7368B152290845BC00DB654E /* Preview Content */,
 			);
 			path = "Bird Finder";
@@ -208,6 +211,7 @@
 				7368B16629099FD900DB654E /* DeviceLocationService.swift in Sources */,
 				7368B15F2908492C00DB654E /* APIGiter.swift in Sources */,
 				7368B14D290845BB00DB654E /* Bird_FinderApp.swift in Sources */,
+				736F04E6291EBE9400FDDC65 /* SecretConstance.swift in Sources */,
 				7368B161290881D300DB654E /* HotSpot.swift in Sources */,
 				736F04E2291DA1DA00FDDC65 /* Bird.swift in Sources */,
 				7368B16B2909AE5000DB654E /* ViewModel.swift in Sources */,
