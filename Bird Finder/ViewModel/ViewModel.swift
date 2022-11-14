@@ -37,9 +37,9 @@ class ViewModel: ObservableObject {
     }
     
     func gitHotSpots(lat: Double, lng: Double)async {
-        let git = APIGiter(gitType: .NearbyHotspots, lat: lat, lng: lng, locId: "")
+        let git = APIGiter()
         do {
-            let data:[HotSpot] = try await git.data()
+            let data = try await git.hotSpotApi(lat: lat, lng: lng)
             DispatchQueue.main.async {
                 self.hotSpots = data
                 print("new spots")
@@ -50,9 +50,9 @@ class ViewModel: ObservableObject {
     }
     
     func gitBirdsNearPoint(lat: Double, lng: Double)async {
-        let git = APIGiter(gitType: .birdsNearPoint, lat: lat, lng: lng, locId: "")
+        let git = APIGiter()
         do {
-            let data:[Bird] = try await git.data()
+            let data = try await git.obsGeoApi(lat: lat, lng: lng)
             DispatchQueue.main.async {
                 self.opservations = data
                 print("new birds")
@@ -64,9 +64,9 @@ class ViewModel: ObservableObject {
     }
     
     func gitSpotInfo(locId: String)async {
-        let git = APIGiter(gitType: .hotSpotInfo, lat: 0, lng: 0, locId: locId)
+        let git = APIGiter()
         do {
-            let data:[String] = try await git.data()
+            let data:[String] = try await git.sppListApi(locId: locId)
             DispatchQueue.main.async {
                 self.birds = data
                 print("new birds")
@@ -95,5 +95,9 @@ class ViewModel: ObservableObject {
                 print("Handle access denied event, possibly with an alert.")
             }
             .store(in: &tokens)
+    }
+    
+    enum Update {
+    case hotSpots, birds, opservations
     }
 }
