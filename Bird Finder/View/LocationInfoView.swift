@@ -15,15 +15,16 @@ struct LocationInfoView: View {
         VStack {
             Text("\(spot.numSpeciesAllTime) all time species.")
             Text(spot.latestObsDt.description)
+            Text("\(viewModel.birds.count)")
             
-            List(viewModel.birds) { bird in
-                Text(bird.comName)
+            List(viewModel.birds, id: \.self) { bird in
+                Text(bird)
             }
         }
         .navigationTitle(spot.locName)
         .onAppear {
             Task {
-                await viewModel.gitSpotInfo(lat: spot.lat, lng: spot.lng)
+                await viewModel.gitSpotInfo(locId: spot.id)
             }
         }
     }

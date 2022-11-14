@@ -12,7 +12,8 @@ import CoreLocation
 class ViewModel: ObservableObject {
     
     @Published var hotSpots: [HotSpot] = []
-    @Published var birds: [Bird] = []
+    @Published var birds: [String] = []
+    @Published var opservations: [Bird] = []
     
     private var tokens: Set<AnyCancellable> = []
     var coordinates: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0) {
@@ -36,7 +37,7 @@ class ViewModel: ObservableObject {
     }
     
     func gitHotSpots(lat: Double, lng: Double)async {
-        let git = APIGiter(gitType: .NearbyHotspots, lat: lat, lng: lng)
+        let git = APIGiter(gitType: .NearbyHotspots, lat: lat, lng: lng, locId: "")
         do {
             let data:[HotSpot] = try await git.data()
             DispatchQueue.main.async {
@@ -48,10 +49,24 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func gitSpotInfo(lat: Double, lng: Double)async {
-        let git = APIGiter(gitType: .hotSpotInfo, lat: lat, lng: lng)
+    func gitBirdsNearPoint(lat: Double, lng: Double)async {
+        let git = APIGiter(gitType: .birdsNearPoint, lat: lat, lng: lng, locId: "")
         do {
             let data:[Bird] = try await git.data()
+            DispatchQueue.main.async {
+                self.opservations = data
+                print("new birds")
+                print(data)
+            }
+        } catch {
+            print("Could not fetch hotspot data \(error.localizedDescription)")
+        }
+    }
+    
+    func gitSpotInfo(locId: String)async {
+        let git = APIGiter(gitType: .hotSpotInfo, lat: 0, lng: 0, locId: locId)
+        do {
+            let data:[String] = try await git.data()
             DispatchQueue.main.async {
                 self.birds = data
                 print("new birds")

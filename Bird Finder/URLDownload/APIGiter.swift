@@ -10,8 +10,9 @@ struct APIGiter {
     let gitType: GitType
     let lat: Double
     let lng: Double
+    let locId: String
     
-    func data<T: Decodable & Collection>()async throws -> T {
+    func data<T: Decodable>()async throws -> T {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
@@ -22,8 +23,13 @@ struct APIGiter {
             guard let url = URL(string: urlString) else { throw URLError(.badURL) }
             let data = try await URLSession.shared.decode(T.self, from: url, dateDecodingStrategy: .formatted(dateFormatter))
             return data
-        case .hotSpotInfo:
+        case .birdsNearPoint:
             let urlString = "https://api.ebird.org/v2/data/obs/geo/recent?lat=\(lat)&lng=\(lng)&key=\(SecretConstance.eBirdApiKey)&dist=3"
+            guard let url = URL(string: urlString) else { throw URLError(.badURL) }
+            let data = try await URLSession.shared.decode(T.self, from: url, dateDecodingStrategy: .formatted(dateFormatter))
+            return data
+        case .hotSpotInfo:
+            let urlString = "https://api.ebird.org/v2/product/spplist/\(locId)?key=\(SecretConstance.eBirdApiKey)"
             guard let url = URL(string: urlString) else { throw URLError(.badURL) }
             let data = try await URLSession.shared.decode(T.self, from: url, dateDecodingStrategy: .formatted(dateFormatter))
             return data
@@ -31,7 +37,7 @@ struct APIGiter {
     }
     
     enum GitType {
-    case NearbyHotspots, hotSpotInfo
+    case NearbyHotspots, hotSpotInfo, birdsNearPoint
     }
 }
 
