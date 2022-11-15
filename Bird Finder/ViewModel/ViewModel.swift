@@ -17,13 +17,13 @@ class ViewModel: ObservableObject {
     private var tokens: Set<AnyCancellable> = []
     var coordinates: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0) {
         didSet {
-            #if targetEnvironment(simulator)
-            hotSpots = [HotSpot.example]
-            #else
+//            #if targetEnvironment(simulator)
+//            hotSpots = [HotSpot.example]
+//            #else
             Task {
-                await gitHotSpots(lat: coordinates.latitude, lng: coordinates.longitude)
+                await update(.HotSpots(lat: coordinates.latitude, lng: coordinates.longitude))
             }
-            #endif
+//            #endif
         }
     }
     
@@ -35,42 +35,29 @@ class ViewModel: ObservableObject {
         location.requestLocationUpdates()
     }
     
-    func gitHotSpots(lat: Double, lng: Double)async {
-        let git = APIGiter()
+    func update(_ type: EBirdApiType)async {
+        let api = APIGiter()
+        
         do {
-            let data = try await git.hotSpotApi(lat: lat, lng: lng)
-            DispatchQueue.main.async {
-                self.hotSpots = data
-                print("new spots")
+            switch type {
+            case .HotSpots(_,_):
+                let data:[HotSpot] = try await api.fetch(type)
+                DispatchQueue.main.async {
+                    self.hotSpots = data
+                }
+            case .ObsGeo(_,_):
+                let data:[Bird] = try await api.fetch(type)
+                DispatchQueue.main.async {
+                    self.birds = data
+                }
+            case .ObsLocId(_):
+                let data:[Bird] = try await api.fetch(type)
+                DispatchQueue.main.async {
+                    self.birds = data
+                }
             }
-        } catch {
-            print("Could not fetch hotspot data \(error.localizedDescription)")
         }
-    }
-    
-//    func gitBirdsNearPoint(lat: Double, lng: Double)async {
-//        let git = APIGiter()
-//        do {
-//            let data = try await git.obsGeoApi(lat: lat, lng: lng)
-//            DispatchQueue.main.async {
-//                self.opservations = data
-//                print("new birds")
-//                print(data)
-//            }
-//        } catch {
-//            print("Could not fetch hotspot data \(error.localizedDescription)")
-//        }
-//    }
-    
-    func gitSpotInfo(locId: String)async {
-        let git = APIGiter()
-        do {
-            let data = try await git.sppListApi(locId: locId)
-            DispatchQueue.main.async {
-                self.birds = data
-                print("new birds")
-            }
-        } catch {
+        catch {
             print("Could not fetch hotspot data \(error.localizedDescription)")
         }
     }
@@ -94,9 +81,5 @@ class ViewModel: ObservableObject {
                 print("Handle access denied event, possibly with an alert.")
             }
             .store(in: &tokens)
-    }
-    
-    enum Update {
-    case hotSpots, birds, opservations
     }
 }

@@ -24,7 +24,7 @@ struct LocationInfoView: View {
         .navigationTitle(spot.locName)
         .onAppear {
             Task {
-                await viewModel.gitSpotInfo(locId: spot.id)
+                await viewModel.update(.ObsLocId(at: spot.id))
             }
         }
     }
