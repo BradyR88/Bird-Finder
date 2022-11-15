@@ -14,11 +14,11 @@ struct LocationInfoView: View {
     var body: some View {
         VStack {
             Text("\(spot.numSpeciesAllTime) all time species.")
-            Text(spot.latestObsDt.description)
-            Text("\(viewModel.birds.count)")
+            Text("\(viewModel.birds.count) species in the last 30 days.")
             
-            List(viewModel.birds, id: \.self) { bird in
-                Text(bird)
+            
+            List(viewModel.birds) { bird in
+                Text("\(bird.comName) - \(bird.dateLastSean)") 
             }
         }
         .navigationTitle(spot.locName)
@@ -33,5 +33,6 @@ struct LocationInfoView: View {
 struct LocationInfoView_Previews: PreviewProvider {
     static var previews: some View {
         LocationInfoView(spot: HotSpot.example)
+            .environmentObject(ViewModel())
     }
 }

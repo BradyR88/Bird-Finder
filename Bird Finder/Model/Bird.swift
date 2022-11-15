@@ -8,10 +8,10 @@
 import Foundation
 
 struct Bird: Decodable, Identifiable {
-    let speciesCode: String
+    let id: String
     let comName: String
     let sciName: String
-    let id: String
+    let locId: String
     // let locName: String
     let obsDt: Date
     let howMany: Int
@@ -22,10 +22,14 @@ struct Bird: Decodable, Identifiable {
     // let locationPrivate: String
     // let subId: String
     
-    private enum CodingKeys: String, CodingKey {
-        case id = "locId"
-        case speciesCode, comName, sciName, obsDt, howMany, lat, lng
+    var dateLastSean: String {
+        obsDt.formatted(date: .abbreviated, time: .shortened)
     }
     
-    static let example = Bird(speciesCode: "hoocro1", comName: "Hooded Crow", sciName: "Corvus cornix", id: "L7884500", obsDt: Date(), howMany: 1, lat: 43.530936, lng: 79.455132)
+    private enum CodingKeys: String, CodingKey {
+        case id = "speciesCode"
+        case comName, sciName, locId, obsDt, howMany, lat, lng
+    }
+    
+    static let example = Bird(id: "hoocro1", comName: "Hooded Crow", sciName: "Corvus cornix", locId: "L7884500", obsDt: Date(), howMany: 1, lat: 43.530936, lng: 79.455132)
 }

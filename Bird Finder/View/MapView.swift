@@ -30,7 +30,7 @@ struct MapView: View {
             .overlay {
                 Color.clear
                     .background(.regularMaterial)
-                    .frame(height: 45)
+                    .frame(height: 1)
                     .frame(maxHeight: .infinity, alignment: .top)
             }
     }

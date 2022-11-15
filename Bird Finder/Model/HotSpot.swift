@@ -22,6 +22,9 @@ struct HotSpot: Decodable, Equatable, Identifiable {
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: lat, longitude: lng)
     }
+    var dateFormated: String {
+        latestObsDt.formatted(date: .abbreviated, time: .omitted)
+    }
     
     private enum CodingKeys: String, CodingKey {
         case id = "locId"

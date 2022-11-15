@@ -18,8 +18,9 @@ struct APIGiter {
         return try await data(from: urlString)
     }
     
-    func sppListApi(locId: String)async throws -> [String] {
-        let urlString = "https://api.ebird.org/v2/product/spplist/\(locId)?key=\(SecretConstance.eBirdApiKey)"
+    func sppListApi(locId: String)async throws -> [Bird] {
+        let urlString = "https://api.ebird.org/v2/data/obs/\(locId)/recent?key=\(SecretConstance.eBirdApiKey)"
+        print("url: \(urlString)")
         return try await data(from: urlString)
     }
     
@@ -31,6 +32,7 @@ struct APIGiter {
         
         guard let url = URL(string: urlString) else { throw URLError(.badURL) }
         let data = try await URLSession.shared.decode(T.self, from: url, dateDecodingStrategy: .formatted(dateFormatter))
+        print("parsed data \(data)")
         return data
     }
 }
