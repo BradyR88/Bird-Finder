@@ -3,4 +3,22 @@
    uuid = "36F4C73E-9EAD-40DE-8EC2-B3BFB4F83265"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4A42F846-3C67-4FFE-9AC4-46CC5BCF946E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bird Finder/URLDownload/URLDecode.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "decode(_:from:keyDecodingStrategy:dataDecodingStrategy:dateDecodingStrategy:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

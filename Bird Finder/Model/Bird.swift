@@ -14,7 +14,7 @@ struct Bird: Decodable, Identifiable {
     let locId: String
     // let locName: String
     let obsDt: Date
-    let howMany: Int
+    let howMany: Int?
     let lat: Double
     let lng: Double
     // let obsValid: String
